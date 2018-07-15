@@ -31,7 +31,7 @@ exports.do = function(data) {
     command += 'docker pull ' + image + '; ';
 
     // Deploy the new container
-    command += 'docker run -d --network totonet --name ' + containerName + ' --restart always ' + image;
+    command += 'docker run -d --network totonet --name ' + containerName + ' --restart always ' + image + ":latest";
 
     // 1. Execute the rm of the previous container if any and the start of the new container
     console.log("About to release " + containerName);
