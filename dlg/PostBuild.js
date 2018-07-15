@@ -18,14 +18,17 @@ exports.do = function(data) {
     // Create the sequence of commands that will have to be executed
     var command = '';
 
-    // Pull the new image
-    command += 'docker pull ' + image + '; ';
-
     // Stop the docker container, if any
     command += 'docker stop ' + containerName + ' || true; ';
 
     // Remove the docker container, if any
     command += 'docker rm ' + containerName + ' || true; ';
+
+    // Remove the old image
+    command += 'docker rmi ' + image + '; ';
+
+    // Pull the new image
+    command += 'docker pull ' + image + '; ';
 
     // Deploy the new container
     command += 'docker run -d --network totonet --name ' + containerName + ' --restart always ' + image;
