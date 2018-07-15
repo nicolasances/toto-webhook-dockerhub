@@ -25,10 +25,10 @@ exports.do = function(data) {
     command += 'docker rm ' + containerName + ' || true; ';
 
     // Remove the old image
-    command += 'docker rmi ' + image + '; ';
+    // command += 'docker rmi ' + image + '; ';
 
     // Pull the new image
-    command += 'docker pull ' + image + '; ';
+    command += 'docker pull ' + image + ':latest; ';
 
     // Deploy the new container
     command += 'docker run -d --network totonet --name ' + containerName + ' --restart always ' + image + ":latest";
